@@ -25,5 +25,5 @@ def main():
     print(f"Variance: {round(variance)}")
     print(f"Standard Deviation: {round(std_dev)}")
 
-if __name__ == "_main_":
+if __name__ == "__main__":
     main()
