@@ -1,4 +1,4 @@
-import math
+import statistics
 
 def main():
     n = int(input("How many values do you want to enter? ")) 
@@ -7,8 +7,6 @@ def main():
     for i in range(1, n + 1):
         num = float(input(f"Enter number {i}: "))
         values.append(num)
-
-    import statistics
 
     avg = statistics.mean(values)
     median = statistics.median(values)
