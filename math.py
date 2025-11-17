@@ -8,17 +8,12 @@ def main():
         num = float(input(f"Enter number {i}: "))
         values.append(num)
 
-    avg = sum(values) / n
+    import statistics
 
-    values_sorted = sorted(values)
-    if n % 2 == 1:
-        median = values_sorted[n // 2]
-    else:
-        median = (values_sorted[n // 2 - 1] + values_sorted[n // 2]) / 2
-
-    variance = sum((x - avg) ** 2 for x in values) / n
-
-    std_dev = math.sqrt(variance)
+    avg = statistics.mean(values)
+    median = statistics.median(values)
+    variance = statistics.pvariance(values)
+    std_dev = statistics.pstdev(values)
 
     print(f"Average: {round(avg)}")
     print(f"Median: {round(median)}")
