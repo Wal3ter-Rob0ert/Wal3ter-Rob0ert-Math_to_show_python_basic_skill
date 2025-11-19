@@ -1,22 +1,38 @@
-import statistics # Importing statistics module for calculations
+def calculate_mean(values):
+    return sum(values) / len(values)
 
-def main(): # Main function to execute the program
-    n = int(input("How many values do you want to enter? ")) # Getting number of inputs from user
+def calculate_median(values):
+    sorted_vals = sorted(values)
+    n = len(sorted_vals)
+    mid = n // 2
+    if n % 2 == 1:
+        return sorted_vals[mid]
+    else:
+        return (sorted_vals[mid - 1] + sorted_vals[mid]) / 2
 
-    values = [] # List to store user input values
-    for i in range(1, n + 1): # Loop to get user input
-        num = float(input(f"Enter number {i}: ")) # Getting user input
-        values.append(num) # Appending input to the list 
+def calculate_variance(values, mean):
+    return sum((x - mean) ** 2 for x in values) / len(values)
 
-    avg = statistics.mean(values) # Calculating average
-    median = statistics.median(values) # Calculating median
-    variance = statistics.pvariance(values) # Calculating variance
-    std_dev = statistics.pstdev(values) # Calculating standard deviation
+def calculate_std_dev(variance):
+    return variance ** 0.5
 
-    print(f"Average: {round(avg)}") # Printing rounded average
-    print(f"Median: {round(median)}") # Printing rounded median
-    print(f"Variance: {round(variance)}") # Printing rounded variance
-    print(f"Standard Deviation: {round(std_dev)}") # Printing rounded standard deviation
+def main():
+    n = int(input("How many values do you want to enter? "))
 
-if __name__ == "__main__": # Ensuring the main function runs only when the script is executed directly
-    main() # Calling the main function to start the program
+    values = []
+    for i in range(1, n + 1):
+        num = float(input(f"Enter number {i}: "))
+        values.append(num)
+
+    avg = calculate_mean(values)
+    median = calculate_median(values)
+    variance = calculate_variance(values, avg)
+    std_dev = calculate_std_dev(variance)
+
+    print(f"Average: {round(avg)}")
+    print(f"Median: {round(median)}")
+    print(f"Variance: {round(variance)}")
+    print(f"Standard Deviation: {round(std_dev)}")
+
+if __name__ == "__main__":
+    main()
