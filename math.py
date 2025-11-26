@@ -1,38 +1,70 @@
-def calculate_mean(values): # Calculate the mean of a list of values
-    return sum(values) / len(values)
+def mean(numbers): # Calculate the mean (average) of a list of numbers
+    total = 0
+    for value in numbers:
+        total = total + value
+    return total / len(numbers)
 
-def calculate_median(values): # Calculate the median of a list of values
-    sorted_vals = sorted(values)
-    n = len(sorted_vals)
-    mid = n // 2
+
+def median(numbers): # Calculate the median of a list of numbers
+    sorted_numbers = sorted(numbers)
+    n = len(sorted_numbers) 
+    middle_index = n // 2 # Integer division
+
     if n % 2 == 1: # Odd number of elements
-        return sorted_vals[mid]
-    else:
-        return (sorted_vals[mid - 1] + sorted_vals[mid]) / 2
+        return sorted_numbers[middle_index] # Middle element
+    else: # Even number of elements
+        left_middle = sorted_numbers[middle_index - 1] # Get the left middle element
+        right_middle = sorted_numbers[middle_index] # Get the right middle element
+        return (left_middle + right_middle) / 2 # Average of the two middle elements
 
-def calculate_variance(values, mean): # Calculate the variance of a list of values
-    return sum((x - mean) ** 2 for x in values) / len(values)
 
-def calculate_std_dev(variance): # Calculate the standard deviation from variance
-    return variance ** 0.5      
+def variance(numbers, avg): # Calculate the variance of a list of numbers
+    total = 0
+    for value in numbers:
+        diff = value - avg
+        total = total + (diff * diff)
+    return total / len(numbers)
 
-def main(): # Main function to execute the calculations
-    n = int(input("How many values do you want to enter? "))
 
-    values = [] # List to store the input values
-    for i in range(1, n + 1):
-        num = float(input(f"Enter number {i}: "))
-        values.append(num)
+def std_dev(variance_value): # Calculate the standard deviation from variance
+    return variance_value ** 0.5 # Square root of variance
 
-    avg = calculate_mean(values)
-    median = calculate_median(values)
-    variance = calculate_variance(values, avg)
-    std_dev = calculate_std_dev(variance)
 
-    print(f"Average: {round(avg)}")
-    print(f"Median: {round(median)}")
-    print(f"Variance: {round(variance)}")
-    print(f"Standard Deviation: {round(std_dev)}")
+def main(): # Main function to interact with the user and display results
+    while True:
+        how_many_text = input("How many values do you want to enter? (>= 1) ")
+        try:
+            how_many = int(how_many_text)
+            if how_many < 1:
+                print("Please enter a number 1 or greater.")
+                continue
+            break
+        except ValueError:
+            print("Please enter a whole number (like 3 or 10).")
 
-if __name__ == "__main__": # Ensuring the main function runs only when the script is executed directly
-    main() # Calling the main function to start the program
+    numbers = []
+
+    for i in range(1, how_many + 1): # Loop to get each number from the user
+        while True:
+            value_text = input(f"Enter number {i}: ")
+            try:
+                value = float(value_text)
+                numbers.append(value)
+                break
+            except ValueError:
+                print("Please enter a valid number (for example: 3, 4.5, -1).")
+
+    avg = mean(numbers)
+    med = median(numbers)
+    var = variance(numbers, avg)
+    sd = std_dev(var)
+
+    print("\nResults:")
+    print("Average:", round(avg))
+    print("Median:", round(med))
+    print("Variance:", round(var))
+    print("Standard Deviation:", round(sd))
+
+
+if __name__ == "__main__": # Entry point of the program
+    main() # Call the main function
