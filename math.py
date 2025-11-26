@@ -1,8 +1,8 @@
 def mean(numbers): # Calculate the mean (average) of a list of numbers
-    total = 0
-    for value in numbers:
-        total = total + value
-    return total / len(numbers)
+    total = 0 # Initialize total to 0
+    for value in numbers: # Loop through each number
+        total = total + value # Add the number to total
+    return total / len(numbers) # Return the average
 
 
 def median(numbers): # Calculate the median of a list of numbers
@@ -19,11 +19,11 @@ def median(numbers): # Calculate the median of a list of numbers
 
 
 def variance(numbers, avg): # Calculate the variance of a list of numbers
-    total = 0
-    for value in numbers:
-        diff = value - avg
-        total = total + (diff * diff)
-    return total / len(numbers)
+    total = 0  # Initialize total to 0
+    for value in numbers: # Loop through each number
+        diff = value - avg # Calculate the difference from the mean
+        total = total + (diff * diff) # Add the squared difference to total
+    return total / len(numbers)  # Return the average of the squared differences
 
 
 def std_dev(variance_value): # Calculate the standard deviation from variance
@@ -31,40 +31,39 @@ def std_dev(variance_value): # Calculate the standard deviation from variance
 
 
 def main(): # Main function to interact with the user and display results
-    while True:
-        how_many_text = input("How many values do you want to enter? (>= 1) ")
-        try:
-            how_many = int(how_many_text)
-            if how_many < 1:
-                print("Please enter a number 1 or greater.")
-                continue
-            break
-        except ValueError:
-            print("Please enter a whole number (like 3 or 10).")
+    while True: # Loop to get a valid number of values from the user
+        how_many_text = input("How many values do you want to enter? (>= 1) ") # Prompt user for number of values
+        try: # Try to convert input to an integer
+            how_many = int(how_many_text) # Convert input to integer
+            if how_many < 1: # Check if the number is less than 1
+                print("Please enter a number 1 or greater.") # Prompt user to enter a valid number
+                continue # Continue the loop to ask again
+            break # Exit the loop if a valid number is entered
+        except ValueError: # Handle invalid input
+            print("Please enter a whole number (like 3 or 10).") # Prompt user to enter a valid number
 
-    numbers = []
+    numbers = [] # Initialize an empty list to store the numbers
 
     for i in range(1, how_many + 1): # Loop to get each number from the user
-        while True:
-            value_text = input(f"Enter number {i}: ")
-            try:
-                value = float(value_text)
-                numbers.append(value)
-                break
-            except ValueError:
-                print("Please enter a valid number (for example: 3, 4.5, -1).")
+        while True: # Loop to get a valid number
+            value_text = input(f"Enter number {i}: ") 
+            try: # Try to convert input to a float
+                value = float(value_text)  # Convert input to float
+                numbers.append(value) # Add the number to the list
+                break   # Exit the loop if a valid number is entered
+            except ValueError: # Handle invalid input
+                print("Please enter a valid number (for example: 3, 4.5, -1).") # Prompt user to enter a valid number
 
-    avg = mean(numbers)
-    med = median(numbers)
-    var = variance(numbers, avg)
-    sd = std_dev(var)
+    avg = mean(numbers) # Calculate the mean
+    med = median(numbers) # Calculate the median
+    var = variance(numbers, avg) # Calculate the variance
+    sd = std_dev(var) # Calculate the standard deviation
 
-    print("\nResults:")
-    print("Average:", round(avg))
-    print("Median:", round(med))
-    print("Variance:", round(var))
-    print("Standard Deviation:", round(sd))
-
+    print("\nResults:") # Display the results
+    print("Average:", round(avg))   # Rounded average
+    print("Median:", round(med))    # Rounded median
+    print("Variance:", round(var))  # Rounded variance
+    print("Standard Deviation:", round(sd))  # Rounded standard deviation
 
 if __name__ == "__main__": # Entry point of the program
     main() # Call the main function
