@@ -1,8 +1,5 @@
 def mean(numbers): # Calculate the mean (average) of a list of numbers
-    total = 0 # Initialize total to 0
-    for value in numbers: # Loop through each number
-        total = total + value # Add the number to total
-    return total / len(numbers) # Return the average
+    return sum(numbers) / len(numbers) # Sum of numbers divided by count
 
 
 def median(numbers): # Calculate the median of a list of numbers
