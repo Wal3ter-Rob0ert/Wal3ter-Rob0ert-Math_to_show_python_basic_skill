@@ -19,7 +19,7 @@ def variance(numbers, avg): # Calculate the variance of a list of numbers
     total = 0  # Initialize total to 0
     for value in numbers: # Loop through each number
         diff = value - avg # Calculate the difference from the mean
-        total = total + (diff * diff) # Add the squared difference to total
+        total = total + (diff ** 2) # Add the squared difference to total
     return total / len(numbers)  # Return the average of the squared differences
 
 
