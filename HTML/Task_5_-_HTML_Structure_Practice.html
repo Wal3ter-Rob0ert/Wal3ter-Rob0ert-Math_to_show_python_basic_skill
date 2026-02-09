@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 </head>
+
 <body>
 
     <header>
@@ -24,9 +26,16 @@
     <footer>
         <p>© 2026 My Website</p>
     </footer>
+    <script>
+        let age = prompt("Enter your age:");
+        let ageInt = parseInt(age);
 
+        if (ageInt < 18) {
+            alert("Access denied")
+        } else {
+            alert("Access granted")
+        }
+    </script>
 </body>
+
 </html>
-
-
-
