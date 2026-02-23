@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>USD to KZT Converter</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="nyan-wrap">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2e/Nyan_Cat_animation.gif" alt="Nyan cat" class="nyan-cat" width="120" height="80">
+  </div>
+  <div class="card">
+    <h1>Currency Converter</h1>
+
+    <div class="currencies">
+      <div class="field">
+        <label>From</label>
+        <select id="from"></select>
+      </div>
+      <button type="button" class="swap" id="swap" aria-label="Swap currencies">⇄</button>
+      <div class="field">
+        <label>To</label>
+        <select id="to"></select>
+      </div>
+    </div>
+
+    <p class="rate" id="rate">1 — = — </p>
+
+    <div class="field">
+      <label for="amount">Amount</label>
+      <input type="number" id="amount" placeholder="Enter amount" min="0" step="any">
+    </div>
+
+    <div class="field">
+      <label>Result</label>
+      <input type="text" id="result" value="—" readonly>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
